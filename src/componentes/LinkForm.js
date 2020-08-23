@@ -8,7 +8,7 @@ const LinkForm = (props) => {
 
     const initialStateValues = {
         tag: '',
-        fecha: '',
+        fecha: new Date().toString(),
         contenido: ''
     };
 
@@ -46,8 +46,8 @@ const LinkForm = (props) => {
     }, [props.currentId]);
 
     return (
-                <form className="card card-body" onSubmit={handleSubmit}>
-                <div className="form-group input group float:left">
+                <form className="card card-body " onSubmit={handleSubmit}>
+                <div className="form-group input group">
                     <div className="form-Group input-group">
                         <div className="input-group-text bg -light">
                             <i className="material-icons">label_outline</i>
@@ -71,7 +71,7 @@ const LinkForm = (props) => {
 
                 </div>
             
-        </form>
+            </form>
 
     )
 }
