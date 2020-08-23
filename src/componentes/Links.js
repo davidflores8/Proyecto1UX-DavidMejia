@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import LinkForm from "./LinkForm"
 import { db } from '../firebase'
+import {toast} from 'react-toastify'
 
 const Links = () => {
 
@@ -8,9 +9,10 @@ const Links = () => {
 
     const addOrEditLink = async (linkObject) => {
         await db.collection('links').doc().set(linkObject);
-        console.log('se agrego la nota')
-
-    }
+        toast('La nota se ha agregado', {
+            type:'success'
+        })
+    };
 
     const getLinks = () => {
         db.collection('links').onSnapshot((querySnapchot) => {
@@ -25,6 +27,16 @@ const Links = () => {
 
     }
 
+    const onDeleteLink = async id =>{
+       if (window.confirm('¿Está seguro que desea eliminar este elemento?')){
+          await  db.collection('links').doc(id).delete();
+          toast('La nota se ha eliminado', {
+              type:'error',
+              autoClose:2000,
+          });
+       } 
+    };
+
     useEffect(() => {
         getLinks();
     }, []);
@@ -36,9 +48,12 @@ const Links = () => {
         </div>
         <div className="col-md-8 p-2">
             {links.map(link => (
-                <div className="card mb-1">
+                <div className="card mb-1" key={link.id}>
                     <div className="card-body">
+                        <div className="d-flex justify-content-between">
                         <h4>{link.tag}</h4>
+                        <i className="material-icons text-danger" onClick={()=> onDeleteLink(link.id)}>close</i>
+                        </div>
                         <p>{link.fecha}</p>
                         <p>{link.contenido}</p>
                     </div>
