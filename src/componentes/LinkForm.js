@@ -6,8 +6,11 @@ import { db } from '../firebase';
 
 const LinkForm = (props) => {
 
-    
-
+    const initialStateValues = {
+        tag: '',
+        fecha: new Date().toString(),
+        contenido: ''
+    };
 
 
     const [values, setValues] = useState(initialStateValues);
