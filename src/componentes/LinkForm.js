@@ -46,27 +46,31 @@ const LinkForm = (props) => {
     }, [props.currentId]);
 
     return (
-        <form className="card card-body" onSubmit={handleSubmit}>
-            <div className="form-Group input-group">
-                <div className="input-group-text bg -light">
-                    <i className="material-icons">label_outline</i>
-                </div>
-                <input type="text" className="form-control" placeholder="Etiqueta de la nota" name="tag" onChange={handleInputChange} value={values.tag} />
-            </div>
+                <form className="card card-body" onSubmit={handleSubmit}>
+                <div className="form-group input group float:left">
+                    <div className="form-Group input-group">
+                        <div className="input-group-text bg -light">
+                            <i className="material-icons">label_outline</i>
+                        </div>
+                        <input type="text" className="form-control" placeholder="Etiqueta de la nota" name="tag" onChange={handleInputChange} value={values.tag} />
+                    </div>
 
-            <div className="form-group input-group">
-                <div className=" input-group-text bg light">
-                    <i className="material-icons">date_range</i>
-                </div>
-                <input type="text" className="form-control" name="fecha" placeholder="Fecha" onChange={handleInputChange} value={values.fecha} />
-            </div>
+                    <div className="form-group input-group">
+                        <div className=" input-group-text bg light">
+                            <i className="material-icons">date_range</i>
+                        </div>
+                        <input type="text" className="form-control" name="fecha" placeholder="Fecha" onChange={handleInputChange} value={values.fecha} />
+                    </div>
 
-            <div className="form-group">
-                <textarea name="contenido" rows="3" className="form-control" placeholder="Escribe tu nota aqui" onChange={handleInputChange} value={values.contenido}></textarea>
-            </div>
-            <button className="btn btn-primary btn-block">
-                {props.currentId ==='' ? 'Guardar Nota' : 'Actualizar Nota'}
-            </button>
+                    <div className="form-group">
+                        <textarea name="contenido" rows="3" className="form-control" placeholder="Escribe tu nota aqui" onChange={handleInputChange} value={values.contenido}></textarea>
+                    </div>
+                    <button className="btn btn-primary btn-block">
+                        {props.currentId ==='' ? 'Guardar Nota' : 'Actualizar Nota'}
+                    </button>
+
+                </div>
+            
         </form>
 
     )
